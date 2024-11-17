@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace avalonia.mvvm.Models;
+namespace SimpleWhisperUI.Models;
 
 public class WhisperModels
 {

@@ -4,10 +4,10 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using avalonia.mvvm.ViewModels;
-using avalonia.mvvm.Views;
+using SimpleWhisperUI.ViewModels;
+using SimpleWhisperUI.Views;
 
-namespace avalonia.mvvm;
+namespace SimpleWhisperUI;
 
 public partial class App : Application
 {

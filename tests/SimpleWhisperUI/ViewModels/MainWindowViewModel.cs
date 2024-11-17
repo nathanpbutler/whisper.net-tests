@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using avalonia.mvvm.Models;
+using SimpleWhisperUI.Models;
 
-namespace avalonia.mvvm.ViewModels;
+namespace SimpleWhisperUI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {

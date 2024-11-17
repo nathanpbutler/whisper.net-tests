@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace avalonia.mvvm.ViewModels;
+namespace SimpleWhisperUI.ViewModels;
 
 public class ViewModelBase : ObservableObject
 {

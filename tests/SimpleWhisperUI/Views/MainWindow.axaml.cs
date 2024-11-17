@@ -2,16 +2,16 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
-using avalonia.mvvm.ViewModels;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
-using avalonia.mvvm.Models;
 using Whisper.net;
 using Whisper.net.Ggml;
 using FFMpegCore;
-using FFMpegCore.Enums;
+using SimpleWhisperUI.Models;
+using SimpleWhisperUI.ViewModels;
 
-namespace avalonia.mvvm.Views;
+namespace SimpleWhisperUI.Views;
 
 public partial class MainWindow : Window
 {
@@ -60,6 +60,14 @@ public partial class MainWindow : Window
 
             if (!file.ToLower().EndsWith(".wav"))
             {
+                // Check if ffmpeg is avaliable in path. TODO: Add current directory
+                var ffmpegAvail = IsApplicationInPath("ffmpeg");
+                if (!ffmpegAvail)
+                {
+                    StatusBox.Text = "ffmpeg is not available in path.";
+                    return;
+                }
+                
                 StatusBox.Text = $"Converting {file} to .wav format...";
                 var result = await ConvertMp3ToWav(file);
                 
@@ -293,5 +301,17 @@ public partial class MainWindow : Window
             StatusBox.Text = $"Error: {e.Message}";
             return null;
         }
+    }
+    
+    // Method to check for application in path
+    private static bool IsApplicationInPath(string application)
+    {
+        var path = Environment.GetEnvironmentVariable("PATH");
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            return false;
+        }
+        var paths = path.Split(Path.PathSeparator);
+        return paths.Select(p => Path.Combine(p, application)).Any(File.Exists);
     }
 }

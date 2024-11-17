@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace avalonia.mvvm;
+namespace SimpleWhisperUI;
 
 sealed class Program
 {

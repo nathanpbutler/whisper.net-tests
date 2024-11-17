@@ -1,4 +1,4 @@
-namespace avalonia.mvvm.Models;
+namespace SimpleWhisperUI.Models;
 
 public class Segment
 {
