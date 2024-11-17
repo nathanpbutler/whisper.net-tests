@@ -1,6 +1,12 @@
-﻿namespace avalonia.mvvm.ViewModels;
+﻿using System.Collections.ObjectModel;
+using avalonia.mvvm.Models;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace avalonia.mvvm.ViewModels;
+
+public class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    // public string SelectedFilePath { get; set; } = string.Empty;
+    // public string Status { get; set; } = string.Empty;
+
+    public ObservableCollection<Segment> Segments { get; } = [];
 }
