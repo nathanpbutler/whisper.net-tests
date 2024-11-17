@@ -15,31 +15,39 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical">
-        <DockPanel Dock="Top" LastChildFill="True" Margin="5,5,5,5">
-            <DockPanel Dock="Left" Margin="5">
+    <DockPanel>
+        <DockPanel Dock="Top">
+            <DockPanel Dock="Left" Margin="10,5,5,5">
                 <Button x:Name="SelectFileBtn" Content="Select file..." Click="SelectFileBtn_OnClick"/>
             </DockPanel>
-            <DockPanel Dock="Right" Margin="5">
+            <DockPanel Dock="Right" Margin="5,5,10,5">
                 <Button IsEnabled="False" Name="TranscribeBtn" Content="Transcribe" Click="TranscribeBtn_OnClick"/>
             </DockPanel>
-            <TextBox x:Name="FilePathTextBox" Margin="5"/> <!--Text="{Binding SelectedFilePath}"-->
+            <DockPanel LastChildFill="True">
+                <DockPanel Dock="Right">
+                    <CheckBox x:Name="TranslateCheckBox" Margin="5">Translate</CheckBox>
+                    <ComboBox x:Name="ModelChoice" Margin="5,5,5,5" ItemsSource="{Binding Models}" SelectedItem="{Binding Models[3]}"/>
+                </DockPanel>
+                <DockPanel Dock="Left">
+                    <TextBox x:Name="FilePathTextBox" Text="{Binding SelectedFilePath}" Margin="5,5,5,5"/>
+                </DockPanel>
+            </DockPanel>
         </DockPanel>
-        <Border BorderThickness="1" BorderBrush="Gray" Margin="10,5,10,5">
-            <TextBlock x:Name="StatusBox" Text="Please select a file..." Margin="5"/>
-        </Border>
-        <DockPanel Dock="Bottom" LastChildFill="True">
-            <DataGrid 
-                x:Name="SegmentsDataGrid"
-                ItemsSource="{Binding Segments}" 
-                Margin="10,5,10,10"
-                BorderThickness="1" BorderBrush="Gray">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Start" Binding="{Binding StartTime}"/>
-                    <DataGridTextColumn Header="End" Binding="{Binding EndTime}"/>
-                    <DataGridTextColumn Header="Text" Binding="{Binding Text}"/>
-                </DataGrid.Columns>
-            </DataGrid>
+        <DockPanel Dock="Bottom">
+            <DockPanel  Dock="Top">
+                <Border BorderThickness="1" BorderBrush="Gray" Margin="10,5,10,5">
+                    <TextBlock x:Name="StatusBox" Text="{Binding Status}" Margin="5"/>
+                </Border>
+            </DockPanel>
+            <DockPanel Dock="Bottom" LastChildFill="True">
+                <DataGrid 
+                    x:Name="SegmentsDataGrid"
+                    ItemsSource="{Binding Segments}" 
+                    Margin="10,5,10,10" AutoGenerateColumns="True" IsReadOnly="True" 
+                    GridLinesVisibility="All"
+                    BorderThickness="1" BorderBrush="Gray">
+                </DataGrid>
+            </DockPanel>
         </DockPanel>
-    </StackPanel>
+    </DockPanel>
 </Window>

@@ -2,7 +2,8 @@ namespace avalonia.mvvm.Models;
 
 public class Segment
 {
-    public string StartTime { get; set; } = string.Empty;
-    public string EndTime { get; set; } = string.Empty;
+    public int Num { get; set; }
+    public string Start { get; set; } = string.Empty;
+    public string End { get; set; } = string.Empty;
     public string Text { get; set; } = string.Empty;
 }
